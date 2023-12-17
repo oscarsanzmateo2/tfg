@@ -8,5 +8,7 @@ De moment, hauries de poder registrar usuaris professors i alumnes, logejar-te.
 Amb els usuaris professors hauries de poder crear assignatures, temes, i des dels temes generar problemes aleatoris.
 Amb els usuaris alumnes hauries de visualitzar totes les assignatures del sistema (en el futur no serà així, però era per provar si podia contestar) i poder contestar problemes anant als temes (sempre que tinguin problemes...)
 
+Remarcar tambè et farà falta tant node com npm.
+
 Si tens algun dubte o falla envia correu i intento solucionar-ho el més ràpid possible.
 
