@@ -1,0 +1,35 @@
+const connectaBD = require("../models/userModel")
+
+afegirProblemesModel = function(temaID, enunciats) {
+    
+    noEmpty = enunciats.filter(enunciat => enunciat != "") // filtrem els enunciats buits...
+    let auxQuery = noEmpty.map(enunciat => [temaID, enunciat])// i els posem en un format amb el que sql pugui treballar facilment
+    
+    console.log("auxQuery = ",auxQuery)
+    var auxConnexio = connectaBD.getConnectaBD() //creem una nova connexio
+    var query = "INSERT INTO problema (TemaID, Enunciat) VALUES ?"
+    return new Promise((resolve, reject) => {
+        if(auxConnexio) {
+            auxConnexio.getConnection(function(err, connection) {
+                if(err){
+                    console.log("ERROR al connectar amb la base de dades: ", err)
+                    reject(err)
+                } else {
+                    connection.query(query, [auxQuery], (err, resultat) => {
+                        connection.release()
+                        if(err) {
+                            console.log("ERROR al afegir els problemes: ", err)
+                            reject(err)
+                        } else {
+                            console.log("Problemes afegits a la BD amb exit!");
+                            resolve(resultat)
+                        }
+                    })
+                }
+            })
+        }
+    })
+
+}
+
+module.exports = afegirProblemesModel

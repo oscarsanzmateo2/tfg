@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crea un tema nou per aquesta assignatura</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Crea un tema nou</h1>
+  <p>
+    Afegeix un tema nou per aquesta assignatura, desprès podras afegir-li tots els problemes que vulguis.
+  </p>
+  <form id="crearTemaForm" method="post">
+    <p>
+    <input type="text" name="Nom" placeholder="Nom Tema" required>
+    <p>
+        Si vols, afegeix aquí la descripció del nou tema...
+       <textarea name="Descripcio" rows="5" cols="35"></textarea>
+    <p>
+    <button type="submit">Crear tema</button>
+    </p>
+  </form>
+  <script>
+    function renderPagTema() {
+        var assignaturaID = window.location.pathname.split("/").pop()
+        document.getElementById("crearTemaForm").action = `/crearTema/${assignaturaID}`
+    }
+    document.addEventListener("DOMContentLoaded", renderPagTema)
+
+  </script>
+</body>
+</html>

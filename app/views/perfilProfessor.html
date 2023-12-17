@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="cat">
+<head>
+    <meta charset="UTF-8">
+    <title>Secció del professorat</title>
+</head>
+<body>
+    <h1>Benvingut a la teva aula professor</h1>
+    <button onclick="window.location.href = '/crearAssingatura'">Crea una nova assignatura</button>
+
+    <section>
+      <h2>Les meves assignatures</h2>
+      <ul id="assignaturesList">
+      </ul>
+    </section>
+    <script>
+      function renderAssignatures() {
+        var assignaturesList = document.getElementById('assignaturesList')
+        fetch('/api/getAssignatures')
+            .then(response => response.json())
+            .then(assignatures => {     
+              assignaturesList.innerHTML = ""
+              console.log(assignatures.assignatures[0])
+              if(assignatures.assignatures[0] != null) {
+                assignatures.assignatures.forEach(assignatura => {
+                  var li = document.createElement('li')
+                  var a = document.createElement('a')
+                  a.textContent = assignatura.Nom
+                  a.href = `/veureAssignatura/${assignatura.AssignaturaID}` 
+                  li.appendChild(a)
+                  assignaturesList.appendChild(li)
+              })
+              } else {
+                var li = document.createElement('li')
+                var a = document.createElement('a')
+                a.textContent = "No hi han assignatures, crea una clicant aquí o al botó de dalt!"
+                a.href = "/crearAssingatura"
+                li.appendChild(a)
+                assignaturesList.appendChild(li)
+              }
+              
+            })
+            .catch(error => {
+                console.error('Error al obtenir les assignatures: ', error);
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderAssignatures);
+    </script>
+    <section>
+        <h2>Els meus alumnes</h2>
+        <ul>
+            <li> Alumne 1 </li>
+            <li> Alumne 2 </li>
+        </ul>
+    </section>
+</body>
+</html>

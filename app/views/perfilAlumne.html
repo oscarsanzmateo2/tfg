@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cat">
+<head>
+    <meta charset="UTF-8">
+    <title>Secció de l'alumnat</title>
+</head>
+<body>
+    <h1>Benvingut a la secció dels alumnes</h1>
+    <section>
+      <h2>Les meves assignatures</h2>
+      <ul id="assignaturesList">
+      </ul>
+    </section>
+    <script>
+      function renderAssignatures() {
+        var assignaturesList = document.getElementById('assignaturesList')
+        fetch("/api/getAssignaturesAlumnes")
+            .then(response => response.json())
+            .then(assignatures => {   
+              console.log(assignatures)  
+              assignaturesList.innerHTML = ""
+              if(assignatures != null) {
+                assignatures.forEach(assignatura => {
+                  var li = document.createElement("li")
+                  var a = document.createElement("a")
+                  li.textContent = `Professor: ${assignatura.NomUsuari}, assignatura: `
+                  a.textContent = assignatura.Nom
+                  a.href = `/afegirAssignatura?AssigID=${assignatura.AssignaturaID}&ProfID=${assignatura.UsuariID}` 
+                  li.appendChild(a)
+                  assignaturesList.appendChild(li)
+              })
+              } else {
+                var li = document.createElement('li')
+                li.textContent = "No hi han assignatures en aquest moment!"
+                assignaturesList.appendChild(li)
+              }
+              
+            })
+            .catch(error => {
+                console.error('Error al obtenir les assignatures: ', error);
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderAssignatures);
+    </script>
+    <section>
+        <h2>Els meus professors</h2>
+        <ul>
+            <li> Professor 1 </li>
+            <li> Professor 2 </li>
+        </ul>
+    </section>
+</body>
+</html>

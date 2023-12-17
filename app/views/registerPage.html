@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registre d'usuari</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Registre d'usuari</h1>
+  <form action="/registre" method="post">
+    <p>
+    <input type="text" name="Nom" placeholder="Nom usuari" required>
+    <p>
+    </p>
+    <input type="text" name="Correu" placeholder="Correu Electronic" required>
+    <p>  
+    </p>
+    <input type="password" name="Contrasenya" placeholder="Contrasenya" required>
+    </p>
+    <p>
+    <label for="TipusUsuari">Tipus usuari</label>
+      <select name="TipusUsuari" id="TipusUsuari">
+        <option value="Alumne">Alumne</option>
+        <option value="Professor">Professor</option>
+      </select>
+    </p>
+    <p>
+    <button type="submit">Registrarse</button>
+    </p>
+  </form>
+</body>
+</html>

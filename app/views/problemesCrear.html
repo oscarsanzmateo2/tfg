@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Creador de problemes</title>
+</head>
+<body>
+  <h1>Crea problemes randomatitzats per el tema</h1>
+  <form id="creaProblemesForm" method="post">
+    <p> 
+        <label for="TipusProblema">Tipus problema</label>
+          <select name="TipusProblema" id="TipusProblema">
+            <option value="EcuacioSegonGrau">Ecuacio de segon grau</option>
+            <option value="aux">...</option>
+          </select>
+    </p> 
+    <input type="submit" value="Crea Problemes aleatoris">
+  </form>
+  <section>
+
+  </section>
+  <script>
+    function renderPagCrearProblemes() {
+      var temaID = window.location.pathname.split("/").pop()
+      document.getElementById("creaProblemesForm").action = `/api/chatGptApi/${temaID}`
+  }
+  document.addEventListener("DOMContentLoaded", renderPagCrearProblemes)
+  </script>
+</body>
+</html>

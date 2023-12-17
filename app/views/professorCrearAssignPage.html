@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Afegeix Assignatura</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Afegeix una nova assignatura</h1>
+  <p>
+    Crea la nova assignatura afegint solament el nom d'aquesta, mes endavant podràs afegir-li tots els temes que vulguis.
+  </p>
+  <form action="/crearAssingatura" method="post">
+    <p>
+    <input type="text" name="Nom" placeholder="Nom Assignatura" required>
+    <p>
+      Si vols, afegeix aquí la descripció de la nova assignatura...
+      <textarea name="Descripcio" rows="5" cols="35"></textarea>
+    <p>
+    <button type="submit">Crear assignatura</button>
+    </p>
+  </form>
+</body>
+</html>

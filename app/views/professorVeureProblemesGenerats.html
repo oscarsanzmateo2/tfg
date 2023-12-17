@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cat">
+<head>
+    <meta charset="UTF-8">
+    <title>Secció del professorat</title>
+</head>
+<body>
+    <h1>Problemes generats per IA</h1>
+    <section>
+      <div id="problemaContenidor"></div>
+      <form id="formProblemes" method="post">
+        <button type="submit">Afegeix els problemes!</button>
+      </form>
+      
+
+      </ul>
+    </section>
+    <script>
+    function renderProblemes() {
+        var temaID = window.location.pathname.split("/").pop()
+        fetch("/api/getDadesGenerades")
+            .then(response => response.json())
+            .then(problemes => {   
+                console.log("esta es la data: ", problemes)
+                console.log(problemes.lenght)
+                for (let i = 0; i < problemes.length; i++) {
+                    var li = document.createElement('li')
+                    li.textContent = problemes[i]
+                    problemaContenidor.appendChild(li) 
+                    var inputProblema = document.createElement('input');
+                    inputProblema.type = 'hidden'
+                    inputProblema.name = 'problemes[]'
+                    inputProblema.value = problemes[i]
+
+                    document.getElementById('formProblemes').appendChild(inputProblema)
+
+                }
+                console.log(problemes)
+                //document.getElementById("formProblemesData").value = JSON.stringify(problemes)
+                document.getElementById("formProblemes").action = `/veureProblemesGenerats/${temaID}`  
+            })
+            .catch(error => {
+                console.error('Error al obtenir els problemes generats per IA: ', error)
+            })
+    }
+    document.addEventListener("DOMContentLoaded", renderProblemes)
+    </script>
+</body>
+</html>

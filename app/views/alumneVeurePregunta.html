@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="cat">
+<head>
+    <meta charset="UTF-8">
+    <title>Secció del professorat</title>
+</head>
+<body>
+    <h1>Problema generat aleatoriament amb IA!</h1>
+    <section>
+      <div id="problemaContenidor"></div>
+      <form id="formProblemes" method="post">
+        <p>Escriu aqui la teva resposta: </p>
+        <input type="text" name="resposta">
+        <button type="submit">Verifica la teva solucio!</button>
+      </form>
+      
+
+      </ul>
+    </section>
+    <script>
+    function renderProblemes() {
+        var temaID = window.location.pathname.split("/").pop()
+        fetch(`/api/getUnaPregunta/${temaID}`)
+            .then(response => response.json())
+            .then(problema => { 
+                var h3 = document.createElement("h3")
+                h3.textContent = problema[0].Enunciat
+                problemaContenidor.appendChild(h3) 
+
+                var inputProblema = document.createElement('input')
+                inputProblema.type = 'hidden'
+                inputProblema.name = 'problema'
+                inputProblema.value = problema[0].Enunciat
+                document.getElementById('formProblemes').appendChild(inputProblema)
+
+                document.getElementById("formProblemes").action = `/api/feedbackChatGPTproblema`  
+            })
+            .catch(error => {
+                console.error('Error al obtenir els problemes generats per IA: ', error)
+            })
+    }
+    document.addEventListener("DOMContentLoaded", renderProblemes)
+    </script>
+</body>
+</html>
