@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-12-2023 a las 21:14:20
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 28-12-2023 a las 19:26:41
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tfg-2023-2024`
+-- Base de datos: `bfwdhpvbmimtv9fv1aie`
 --
 
 -- --------------------------------------------------------
@@ -50,7 +50,8 @@ INSERT INTO `asignatura` (`AssignaturaID`, `Nom`, `ProfessorID`, `Descripcio`) V
 (13, 'matematiques 2', 17, 'En aquesta assignatura es podran fer problemes...'),
 (14, 'efgsdgsd', 17, 'dfsgsdgdsgsdgsdg'),
 (15, 'prova assignatura', 19, 'aixo es una prova'),
-(16, 'segona prova', 19, 'askdfjasfasfasfa');
+(16, 'segona prova', 19, 'askdfjasfasfasfa'),
+(17, 'assignatura 1', 14, 'assignatura asidhasifjnsdfgljksdjngfsdg');
 
 -- --------------------------------------------------------
 
@@ -118,20 +119,41 @@ INSERT INTO `problema` (`ProblemaID`, `Enunciat`, `TemaID`) VALUES
 (48, '8x^2 + 9x - 4 = 0', 13),
 (49, '-4x^2 - 3x + 5 = 0', 13),
 (50, '7x^2 + 2x + 3 = 0', 13),
-(51, '-5x^2 - 7x - 2 = 0', 13);
+(51, '-5x^2 - 7x - 2 = 0', 13),
+(52, '-2x^2 + 2x - 12 = 0', 15),
+(53, '3x^2 + 6x + 3 = 0', 15),
+(54, '-x^2 + 5x - 6 = 0', 15),
+(55, '4x^2 - 8x + 4 = 0', 15),
+(56, '-5x^2 - 25x + 30 = 0', 15),
+(57, '2x^2 - 4x + 2 = 0', 15),
+(58, '-6x^2 + 24x - 16 = 0', 15),
+(59, '-x^2 + 2x - 1 = 0', 15),
+(60, '7x^2 + 7x + 2 = 0', 15),
+(61, '-3x^2 - 6x - 3 = 0', 15);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `registrealumne`
+-- Estructura de tabla para la tabla `registralumne`
 --
 
-CREATE TABLE `registrealumne` (
+CREATE TABLE `registralumne` (
   `RegistreID` int(11) NOT NULL,
   `AlumneID` int(11) DEFAULT NULL,
-  `ProblemaID` int(11) DEFAULT NULL,
-  `DataResolucio` date DEFAULT NULL
+  `AssignaturaID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `registralumne`
+--
+
+INSERT INTO `registralumne` (`RegistreID`, `AlumneID`, `AssignaturaID`) VALUES
+(2, 22, 2),
+(3, 22, 2),
+(4, 22, 2),
+(5, 18, 17),
+(6, 18, 12),
+(7, 18, 15);
 
 -- --------------------------------------------------------
 
@@ -164,7 +186,8 @@ INSERT INTO `tema` (`TemaID`, `NomTema`, `AssignaturaID`, `DescripcioTema`) VALU
 (11, 'vzxcvzxvzxv', 14, 'zxvzxvzxvzxvzx'),
 (12, 'tema de prova', 16, 'aixo es un tema de prova'),
 (13, 'tema', 16, 'tema proca '),
-(14, 'tema', 16, 'tema proca ');
+(14, 'tema', 16, 'tema proca '),
+(15, 'tema1 assignatura 1', 17, 'qerwfgsdgsdfg');
 
 -- --------------------------------------------------------
 
@@ -196,7 +219,8 @@ INSERT INTO `usuari` (`UsuariID`, `NomUsuari`, `Correu`, `Contrasenya`, `TipusUs
 (18, 'alumne@gmail.com', 'alumne@gmail.com', '$2a$10$o9hXVGgCLOE0nZbgsBStNeyltsjL1jZ0tz2hdWKaGdPZUfKIx8H/C', 'Alumne', NULL),
 (19, 'prova profe', 'pprofe@gmail.com', '$2a$10$wEHgpp8STJsbowX9I0zHcOaLH8gU59mfZ1lakuzDEagjxJGjd7qYO', 'Professor', NULL),
 (20, 'alumne prova', 'provaAlumne', '$2a$10$RmeI0ALn.q7O9gEH/IoARuyHVnChEdlQq09Z3gEC4saaAUGhlwFJ.', 'Alumne', NULL),
-(21, 'prova', 'provaAlumne@gmail.com', '$2a$10$s9LPYQkM74zhBXfiQV9greRzNtFFcpAYnjLLm/g/STtT.BL.hD6M6', 'Alumne', NULL);
+(21, 'prova', 'provaAlumne@gmail.com', '$2a$10$s9LPYQkM74zhBXfiQV9greRzNtFFcpAYnjLLm/g/STtT.BL.hD6M6', 'Alumne', NULL),
+(22, 'algoAlu', 'algoAlu@gmail.com', '$2a$10$OlaPneditKkt002G7YDo7eG7LYDNwwRT5/A/rfA6tMJIpncRZUhra', 'Alumne', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -217,12 +241,12 @@ ALTER TABLE `problema`
   ADD KEY `TemaID` (`TemaID`);
 
 --
--- Indices de la tabla `registrealumne`
+-- Indices de la tabla `registralumne`
 --
-ALTER TABLE `registrealumne`
+ALTER TABLE `registralumne`
   ADD PRIMARY KEY (`RegistreID`),
   ADD KEY `AlumneID` (`AlumneID`),
-  ADD KEY `ProblemaID` (`ProblemaID`);
+  ADD KEY `AssignaturaID` (`AssignaturaID`);
 
 --
 -- Indices de la tabla `tema`
@@ -245,31 +269,31 @@ ALTER TABLE `usuari`
 -- AUTO_INCREMENT de la tabla `asignatura`
 --
 ALTER TABLE `asignatura`
-  MODIFY `AssignaturaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `AssignaturaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `problema`
 --
 ALTER TABLE `problema`
-  MODIFY `ProblemaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `ProblemaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
--- AUTO_INCREMENT de la tabla `registrealumne`
+-- AUTO_INCREMENT de la tabla `registralumne`
 --
-ALTER TABLE `registrealumne`
-  MODIFY `RegistreID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `registralumne`
+  MODIFY `RegistreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tema`
 --
 ALTER TABLE `tema`
-  MODIFY `TemaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `TemaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `usuari`
 --
 ALTER TABLE `usuari`
-  MODIFY `UsuariID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `UsuariID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restricciones para tablas volcadas
@@ -288,11 +312,11 @@ ALTER TABLE `problema`
   ADD CONSTRAINT `problema_ibfk_1` FOREIGN KEY (`TemaID`) REFERENCES `tema` (`TemaID`);
 
 --
--- Filtros para la tabla `registrealumne`
+-- Filtros para la tabla `registralumne`
 --
-ALTER TABLE `registrealumne`
-  ADD CONSTRAINT `registrealumne_ibfk_1` FOREIGN KEY (`AlumneID`) REFERENCES `usuari` (`UsuariID`),
-  ADD CONSTRAINT `registrealumne_ibfk_2` FOREIGN KEY (`ProblemaID`) REFERENCES `problema` (`ProblemaID`);
+ALTER TABLE `registralumne`
+  ADD CONSTRAINT `registralumne_ibfk_1` FOREIGN KEY (`AlumneID`) REFERENCES `usuari` (`UsuariID`),
+  ADD CONSTRAINT `registralumne_ibfk_2` FOREIGN KEY (`AssignaturaID`) REFERENCES `asignatura` (`AssignaturaID`);
 
 --
 -- Filtros para la tabla `tema`
