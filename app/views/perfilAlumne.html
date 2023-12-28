@@ -8,6 +8,8 @@
     <h1>Benvingut a la secció dels alumnes</h1>
     <section>
       <h2>Les meves assignatures</h2>
+      <button onclick="window.location.href = '/afegirAssignatura'">Afegeix una assignatura a la teva llista!</button>
+
       <ul id="assignaturesList">
       </ul>
     </section>
@@ -19,13 +21,13 @@
             .then(assignatures => {   
               console.log(assignatures)  
               assignaturesList.innerHTML = ""
-              if(assignatures != null) {
+              if(assignatures != null ) {
                 assignatures.forEach(assignatura => {
                   var li = document.createElement("li")
                   var a = document.createElement("a")
                   li.textContent = `Professor: ${assignatura.NomUsuari}, assignatura: `
                   a.textContent = assignatura.Nom
-                  a.href = `/afegirAssignatura?AssigID=${assignatura.AssignaturaID}&ProfID=${assignatura.UsuariID}` 
+                  a.href = `/veureAssignaturaAlumne/${assignatura.AssignaturaID}` 
                   li.appendChild(a)
                   assignaturesList.appendChild(li)
               })

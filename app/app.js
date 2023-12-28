@@ -1,6 +1,5 @@
 const express = require('express')
 const session = require('express-session')
-const app = express()
 const userController = require('./controllers/userController')
 const path = require('path')
 const indexRouter = require('./routes/index')
@@ -9,6 +8,11 @@ const assignaturaController = require("./controllers/assignaturaController")
 const generarNumerosAleatorios = require("./controllers/apiController")
 const alumneController = require("./controllers/alumneController")
 const feedbackProblema = require("./controllers/apiControllerAlumne")
+
+const app = express()
+
+
+
 app.use(session({ secret: 'nosehadeseralgoaleatoriillargambnumero875494', resave: true, saveUninitialized: true }))
 
 
@@ -79,6 +83,7 @@ app.get('/api/getAssignaturesAlumnes', async (req, res) => {
   try {
     
     var assignatura = await alumneController.renderPaginaAlumne(req, res)
+    console.log(req.session.usuari)
     res.json( assignatura )
   } catch (error) {
     console.error('Error al obtenir les assignatures: ', error);

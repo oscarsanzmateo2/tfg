@@ -14,7 +14,8 @@ function logUsuariController(req, res) {
             req.session.usuari = {
                 idUsuari: data[0].UsuariID,
                 correu: Correu,
-                tipus: data[0].TipusUsuari
+                tipus: data[0].TipusUsuari,
+                llistaAssignatures: data[0].AlumnesAssignaturesLlista
             }
             res.redirect("/perfil")
         } else {

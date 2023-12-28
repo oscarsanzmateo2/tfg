@@ -2,7 +2,7 @@
 <html lang="cat">
 <head>
     <meta charset="UTF-8">
-    <title>Secció del professorat</title>
+    <title>Secció de l'alumnat</title>
 </head>
 <body>
     <h1>Problema generat aleatoriament amb IA!</h1>
@@ -22,18 +22,32 @@
         var temaID = window.location.pathname.split("/").pop()
         fetch(`/api/getUnaPregunta/${temaID}`)
             .then(response => response.json())
-            .then(problema => { 
-                var h3 = document.createElement("h3")
-                h3.textContent = problema[0].Enunciat
-                problemaContenidor.appendChild(h3) 
+            .then(problema => {
+                if(problema != [] && problema.length>0) { //si hi ha algun problema en el tema es pot contestar
+                    var h3 = document.createElement("h3")
+                    h3.textContent = problema[0].Enunciat
+                    problemaContenidor.appendChild(h3) 
 
-                var inputProblema = document.createElement('input')
-                inputProblema.type = 'hidden'
-                inputProblema.name = 'problema'
-                inputProblema.value = problema[0].Enunciat
-                document.getElementById('formProblemes').appendChild(inputProblema)
+                    var inputProblema = document.createElement('input')
+                    inputProblema.type = 'hidden'
+                    inputProblema.name = 'problema'
+                    inputProblema.value = problema[0].Enunciat
+                    document.getElementById('formProblemes').appendChild(inputProblema)
 
-                document.getElementById("formProblemes").action = `/api/feedbackChatGPTproblema`  
+                    document.getElementById("formProblemes").action = `/api/feedbackChatGPTproblema`  
+                }  else { // no hi ha cap problema en el tema, et fa tornar enrera...
+                    var h3 = document.createElement("h3")
+                    h3.textContent = "No hi han problemes per aquest tema, clica al botó de sota per tornar a la llista de assignatures"
+                    problemaContenidor.appendChild(h3)
+                    var formProblemes = document.getElementById("formProblemes")
+                    formProblemes.parentNode.removeChild(formProblemes)
+                    var button = document.createElement("button")
+                    button.textContent = "Torna endarere"
+                    button.addEventListener("click", function() {
+                        window.history.back()
+                    })
+                    problemaContenidor.appendChild(button)
+                }
             })
             .catch(error => {
                 console.error('Error al obtenir els problemes generats per IA: ', error)

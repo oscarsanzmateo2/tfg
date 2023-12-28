@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt")
 
 loginUsuari = function(email, contrasenya) {
     var auxConnexio = connectaBD.getConnectaBD() //creem una nova connexio
-    const query = "SELECT Contrasenya, TipusUsuari, UsuariID FROM usuari WHERE Correu = ?"
+    const query = "SELECT Contrasenya, TipusUsuari, UsuariID, AlumnesAssignaturesLlista FROM usuari WHERE Correu = ?"
     return new Promise((resolve,reject) => {
         if(auxConnexio) {
             auxConnexio.getConnection(function(err, connection){

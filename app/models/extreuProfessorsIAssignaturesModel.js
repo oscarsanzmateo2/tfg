@@ -2,7 +2,7 @@ const connectaBD = require("../models/userModel")
 
 extreuProfessorsIAssignatures = function() {
     var auxConnexio = connectaBD.getConnectaBD()
-    var query = `SELECT usuari.NomUsuari,usuari.UsuariID, asignatura.Nom, asignatura.AssignaturaID FROM usuari LEFT JOIN asignatura ON usuari.UsuariID = asignatura.ProfessorID WHERE usuari.TipusUsuari = "Professor"`
+    var query = `SELECT usuari.NomUsuari,usuari.UsuariID, usuari.AlumnesAssignaturesLlista, asignatura.Nom, asignatura.AssignaturaID FROM usuari LEFT JOIN asignatura ON usuari.UsuariID = asignatura.ProfessorID WHERE usuari.TipusUsuari = "Professor"`
     return new Promise((resolve, reject) => {
         if(auxConnexio) {
             auxConnexio.getConnection(function(err, connection){

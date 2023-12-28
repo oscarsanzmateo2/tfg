@@ -8,6 +8,7 @@ const perfilController = require("../controllers/perfilController")
 const professorController = require("../controllers/professorController")
 const assignaturaController = require("../controllers/assignaturaController")
 const problemaController = require("../controllers/problemaController")
+const alumneController = require("../controllers/alumneController")
 
 
 // Ruta GET per la pagina principal
@@ -76,6 +77,15 @@ router.post("/veureProblemesGenerats/:idTema", problemaController.afegirProbleme
 
 router.get("/afegirAssignatura", (req, res) => {
   res.sendFile(path.join(__dirname, "../views", "alumneAfegirAssignatures.html"))
+})
+
+router.get("/afegirAssignaturaAlumne", (req, res) => {
+  alumneController.actualitzaLlistaAlumne(req, res)
+  res.sendFile(path.join(__dirname, "../views", "perfilAlumne.html"))
+})
+
+router.get("/veureAssignaturaAlumne/:idAssignatura", (req, res) => {
+  res.sendFile(path.join(__dirname, "../views", "alumneVeureAssignatura.html"))
 })
 
 router.get("/alumnePreguntaAleatoria/:idTema", (req, res) => {

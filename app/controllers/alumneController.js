@@ -1,5 +1,6 @@
 const extreuProfessorsIAssignatures = require("../models/extreuProfessorsIAssignaturesModel")
 const getPregunta = require("../models/getPreguntaModel")
+const actualitzaLlistaAlumneModel = require("../models/actualitzaLlistaAlumneModel")
 
 var alumneController = {
     renderPaginaAlumne: (req, res) => {
@@ -14,6 +15,12 @@ var alumneController = {
         .then((pregunta)=> {
             console.log(pregunta)
             return pregunta
+        })
+    },
+    actualitzaLlistaAlumne: (req, res) => {
+        return actualitzaLlistaAlumneModel(req.session.usuari.idUsuari, req.query.AssigID)
+        .then((data) => {
+            return data
         })
     }
 }

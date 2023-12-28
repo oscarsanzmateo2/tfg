@@ -6,55 +6,37 @@
 </head>
 <body>
     <h1>Assignatures disponibles: </h1>
-    <button id="creaTemaButton">Subscriu-te a aquesta assignatura (no va encara)</button>
+    <p>Subscriu-te una de les següents assignatures:</p>
     <section>
-      <div id="assignaturaContenidor"></div>
+      <div id="assignaturesList"></div>
       </ul>
     </section>
     <hr>
-    <section>
-        <h1>Temes de la assignatura</h1>
-        <p>Clica sobre un dels temes per començar a fer tests!</p>
-        <div id="assignaturaTemes"></div>
-        </ul>
-    </section>
     <script>
     function renderAssignatura() { 
-        const params = new URLSearchParams(window.location.search)
-        const assigID = params.get("AssigID")
-        const profID = params.get("ProfID")
-        console.log(profID)
-        fetch(`/api/getUnaAssignatura/${assigID}`)
+        fetch(`/api/getAssignaturesAlumnes`)
             .then(response => response.json())
-            .then(data => {   
-                var assignatura = data.assignatura[0]
-                if(assignatura) {
-                    var assignaturaList = document.createElement("ul")
-                    assignaturaList.innerHTML = `
-                        <h1> La meva assignatura:   ${assignatura.Nom}</h1>
-                        <li><strong>Assignatura ID:</strong> ${assignatura.AssignaturaID}</li>
-                        <li><strong>Professor ID:</strong> ${assignatura.ProfessorID}</li>
-                        <li><strong>Descripció:</strong> ${assignatura.Descripcio || "No s'ha afegit una descripció"}</li>
-                    `
-                    assignaturaContenidor.appendChild(assignaturaList)
-                    var assignaturaTema = document.createElement("ul")
-                    assignaturaTema.innerHTML = ""
-                    if(data.assignatura[0].NomTema != null) { //si hi ha minim un tema, aquesta condicio la pasa
-                        data.assignatura.forEach(element => {
-                        var li = document.createElement('li')
-                        var a = document.createElement('a')
-                        a.textContent = element.NomTema
-                        a.href = `/alumnePreguntaAleatoria/${element.TemaID}` 
-                        li.appendChild(a)
-                        assignaturaTemes.appendChild(li)        
-                    })
-                    } else { // si no hi han temes crea un text predefinit
-                        var li = document.createElement("li")
-                        li.textContent = "No hi han temes per aquesta assignatura!"
-                        assignaturaTemes.appendChild(li)
-                    }                
-                    document.querySelector("button").setAttribute("onclick", `window.location.href = "/alumneSubscriuteAssignatura?Assignatura=${assignatura.AssignaturaID}"`)
-                }     
+            .then(assignatures => {   
+                console.log(assignatures)  
+                assignaturesList.innerHTML = ""
+                if(assignatures != null) {
+                    assignatures.forEach(assignatura => {
+                        if(assignatura.AssignaturaID != null) {
+                            var li = document.createElement("li")
+                            var a = document.createElement("a")
+                            li.textContent = `Professor: ${assignatura.NomUsuari}, assignatura: `
+                            a.textContent = assignatura.Nom
+                            a.href = `/afegirAssignaturaAlumne?AssigID=${assignatura.AssignaturaID}&ProfID=${assignatura.UsuariID}` 
+                            li.appendChild(a)
+                            assignaturesList.appendChild(li)
+                        }    
+                })
+            } else {
+                var li = document.createElement('li')
+                li.textContent = "No hi han assignatures en aquest moment!"
+                assignaturesList.appendChild(li)
+              }
+              
             })
             .catch(error => {
                 console.error('Error al obtenir la assignatura: ', error)
