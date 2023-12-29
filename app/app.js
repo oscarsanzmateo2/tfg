@@ -114,7 +114,7 @@ app.post("/api/feedbackChatGPTproblema", async (req, res) => {
 
 app.use('/', indexRouter)
 
-const port = porcess.env.PORT || 3000
+const port = process.env.PORT || 3000
 
 app.listen(port, () => {
   console.log('Servidor escuchando en el puerto 3000');
