@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-12-2023 a las 19:26:41
+-- Tiempo de generación: 31-12-2023 a las 11:52:56
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bfwdhpvbmimtv9fv1aie`
+-- Base de datos: `tfg-2023-2024`
 --
 
 -- --------------------------------------------------------
@@ -51,7 +51,9 @@ INSERT INTO `asignatura` (`AssignaturaID`, `Nom`, `ProfessorID`, `Descripcio`) V
 (14, 'efgsdgsd', 17, 'dfsgsdgdsgsdgsdg'),
 (15, 'prova assignatura', 19, 'aixo es una prova'),
 (16, 'segona prova', 19, 'askdfjasfasfasfa'),
-(17, 'assignatura 1', 14, 'assignatura asidhasifjnsdfgljksdjngfsdg');
+(17, 'assignatura 1', 14, 'assignatura asidhasifjnsdfgljksdjngfsdg'),
+(18, 'assignatura 1', 24, 'descripcio assignatura 1'),
+(19, 'assignatura 2', 24, 'desijsfdvnboadhjgnosdigj');
 
 -- --------------------------------------------------------
 
@@ -129,7 +131,17 @@ INSERT INTO `problema` (`ProblemaID`, `Enunciat`, `TemaID`) VALUES
 (58, '-6x^2 + 24x - 16 = 0', 15),
 (59, '-x^2 + 2x - 1 = 0', 15),
 (60, '7x^2 + 7x + 2 = 0', 15),
-(61, '-3x^2 - 6x - 3 = 0', 15);
+(61, '-3x^2 - 6x - 3 = 0', 15),
+(62, '2x^2 + 4x - 2 = 0', 16),
+(63, '-3x^2 - 6x + 3 = 0', 16),
+(64, '5x^2 - 10x + 5 = 0', 16),
+(65, '-4x^2 + 8x - 4 = 0', 16),
+(66, '6x^2 - 12x + 6 = 0', 16),
+(67, '-7x^2 + 14x - 7 = 0', 16),
+(68, '9x^2 + 18x - 9 = 0', 16),
+(69, '-2x^2 - 4x + 2 = 0', 16),
+(70, '8x^2 - 16x + 8 = 0', 16),
+(71, '-10x^2 + 20x - 10 = 0', 16);
 
 -- --------------------------------------------------------
 
@@ -153,7 +165,9 @@ INSERT INTO `registralumne` (`RegistreID`, `AlumneID`, `AssignaturaID`) VALUES
 (4, 22, 2),
 (5, 18, 17),
 (6, 18, 12),
-(7, 18, 15);
+(7, 18, 15),
+(8, 23, 18),
+(9, 23, 3);
 
 -- --------------------------------------------------------
 
@@ -187,7 +201,8 @@ INSERT INTO `tema` (`TemaID`, `NomTema`, `AssignaturaID`, `DescripcioTema`) VALU
 (12, 'tema de prova', 16, 'aixo es un tema de prova'),
 (13, 'tema', 16, 'tema proca '),
 (14, 'tema', 16, 'tema proca '),
-(15, 'tema1 assignatura 1', 17, 'qerwfgsdgsdfg');
+(15, 'tema1 assignatura 1', 17, 'qerwfgsdgsdfg'),
+(16, 'tema 1', 18, 'descripcio tema 1');
 
 -- --------------------------------------------------------
 
@@ -220,7 +235,9 @@ INSERT INTO `usuari` (`UsuariID`, `NomUsuari`, `Correu`, `Contrasenya`, `TipusUs
 (19, 'prova profe', 'pprofe@gmail.com', '$2a$10$wEHgpp8STJsbowX9I0zHcOaLH8gU59mfZ1lakuzDEagjxJGjd7qYO', 'Professor', NULL),
 (20, 'alumne prova', 'provaAlumne', '$2a$10$RmeI0ALn.q7O9gEH/IoARuyHVnChEdlQq09Z3gEC4saaAUGhlwFJ.', 'Alumne', NULL),
 (21, 'prova', 'provaAlumne@gmail.com', '$2a$10$s9LPYQkM74zhBXfiQV9greRzNtFFcpAYnjLLm/g/STtT.BL.hD6M6', 'Alumne', NULL),
-(22, 'algoAlu', 'algoAlu@gmail.com', '$2a$10$OlaPneditKkt002G7YDo7eG7LYDNwwRT5/A/rfA6tMJIpncRZUhra', 'Alumne', NULL);
+(22, 'algoAlu', 'algoAlu@gmail.com', '$2a$10$OlaPneditKkt002G7YDo7eG7LYDNwwRT5/A/rfA6tMJIpncRZUhra', 'Alumne', NULL),
+(23, 'alumne', 'alumne1@gmail.com', '$2a$10$uIKiTyXSiyPdW4bc2yYDG.bSpmAdShRDqbDmf3VtcOM43xkxbJByW', 'Alumne', NULL),
+(24, 'professor', 'professor1@gmail.com', '$2a$10$9E9Tn0PCgOiZCqKNyPgEXeexJ4tu2FxnKD98EhChTGzi3AKRLBWIu', 'Professor', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -269,31 +286,31 @@ ALTER TABLE `usuari`
 -- AUTO_INCREMENT de la tabla `asignatura`
 --
 ALTER TABLE `asignatura`
-  MODIFY `AssignaturaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `AssignaturaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `problema`
 --
 ALTER TABLE `problema`
-  MODIFY `ProblemaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `ProblemaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de la tabla `registralumne`
 --
 ALTER TABLE `registralumne`
-  MODIFY `RegistreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `RegistreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `tema`
 --
 ALTER TABLE `tema`
-  MODIFY `TemaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `TemaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `usuari`
 --
 ALTER TABLE `usuari`
-  MODIFY `UsuariID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `UsuariID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Restricciones para tablas volcadas

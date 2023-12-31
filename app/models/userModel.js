@@ -6,10 +6,10 @@
 const mysql = require("mysql")
 
 const connectaBD = mysql.createPool({
-        host: process.env.DB_HOST,
-        user: process.env.DB_USERNAME,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_DBNAME,
+        host: "localhost",
+        user: "root",
+        password: "",
+        database:"tfg-2023-2024",
         waitForConnections: true,
         connectionLimit: 100,
         queueLimit: 10,
