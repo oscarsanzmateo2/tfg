@@ -19,7 +19,7 @@ var assignaturaController = {
         .catch((error) => {
             console.error("Error crear l'assignatura: ", error)
             res.status(500).send("Error al crear l'assignatura")
-            res.redirect("/perfil")
+            res.redirect("/perfil/Professor")
         })
     },
     renderPaginaTema: (req, res) => {

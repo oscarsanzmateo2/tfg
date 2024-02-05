@@ -3,68 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Secció del professorat</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/help.css">
 </head>
-<body>
-    <h1>Informació del tema</h1>
-    <button id="creaProblemaButton">Crea nous problemes</button>
-    <section>
-      <div id="assignaturaContenidor"></div>
-      </ul>
-    </section>
-    <hr>
-    <section>
-        <h1>Problemes del tema</h1>
-        <div id="assignaturaTemes"></div>
-        </ul>
-      </section>
-    <script>
-    function renderAssignatura() {
-        var temaID = window.location.pathname.split("/").pop()
-        fetch(`/api/getUnTema/${temaID}`)
-            .then(response => response.json())
-            .then(data => {   
-                console.log(data)
-                var tema = data.tema[0]
-                if(tema) {
-                    var temesList = document.createElement("ul")
-                    temesList.innerHTML = `
-                        <h1> El meu tema:   ${tema.NomTema}</h1>
-                        <li><strong>Tema ID:</strong> ${tema.TemaID}</li>
-                        <li><strong>Assignatura ID:</strong> ${tema.AssignaturaID}</li>
-                        <li><strong>Descripció:</strong> ${tema.DescripcioTema || "No s'ha afegit una descripció"}</li>
-                    `
-                    assignaturaContenidor.appendChild(temesList)
-                    var assignaturaTema = document.createElement("ul")
-                    assignaturaTema.innerHTML = ""
-                    if(data.tema[0].ProblemaID != null) {
-                        data.tema.forEach(element => {
-                            console.log(element)
-                            var li = document.createElement('li')
-                            li.textContent = element.Enunciat
-                            assignaturaTemes.appendChild(li)        
-                    })
-                    } else { // si no hi han temes crea un text predefinit
-                        var li = document.createElement("li")
-                        var a = document.createElement("a")
-                        a.textContent = "No hi han problemes per aquest tema, crea'n un apretant aquí o al botó de dalt!"
-                        a.href = `/crearProblemes/${tema.TemaID}` 
-                        li.appendChild(a)
-                        assignaturaTemes.appendChild(li)
-                    }   
-                    
-                    
-                    document.querySelector("button").setAttribute("onclick", `window.location.href = "/crearProblemes/${tema.TemaID}"`)
-                }
-                
-                
-            })
-            .catch(error => {
-                console.error('Error al obtenir la assignatura: ', error)
-            })
-    }
-    
+<body id="professorPage">
+    <div id="app">
+        <div class="vertical-line-left"></div>
+        <div class="vertical-line-right"></div>
+        <a href="/"><img class="topLeftLogo" src="/images/QG.png" alt="Logo QGenerator.AI"></img></a>
+        <div class="content">
 
-    document.addEventListener("DOMContentLoaded", renderAssignatura)
-    </script>
+            <h1>Informació del tema</h1>
+            <section>
+            <div id="assignaturaContenidor"></div>
+            </section>
+            <section>
+                <div class="boto-h2-inline">
+                    <h2>Problemes del tema</h2>
+                    <button class="boto-css" id="creaProblemaButton">Crea nous problemes</button>
+                </div>
+                <div id="assignaturaTemes"></div>
+            </section>
+            <script src="/javascript/tema.js"></script>
+        </div>
+    </div>
 </body>
 </html>

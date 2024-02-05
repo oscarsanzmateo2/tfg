@@ -2,22 +2,26 @@
 <html>
 <head>
   <title>Afegeix Assignatura</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h1>Afegeix una nova assignatura</h1>
-  <p>
-    Crea la nova assignatura afegint solament el nom d'aquesta, mes endavant podràs afegir-li tots els temes que vulguis.
-  </p>
-  <form action="/crearAssingatura" method="post">
-    <p>
-    <input type="text" name="Nom" placeholder="Nom Assignatura" required>
-    <p>
-      Si vols, afegeix aquí la descripció de la nova assignatura...
+  <div id="app">
+    <div class="vertical-line-left"></div>
+    <div class="vertical-line-right"></div>
+    <a href="/"><img class="topLeftLogo" src="images/QG.png" alt="Logo QGenerator.AI"></img></a>
+    <div class="content">
+    <h1>Afegeix una nova assignatura</h1>
+    <h2>Crea la nova assignatura afegint solament el nom d'aquesta i una descripció si vols.  </h2>
+    <h3>Un cop creada l'assignatura, podràs afegir-li tots els temes que vulguis.</h3>
+    <form action="/crearAssingatura" method="post">
+      <label for="NomAssignatura">Nom assignatura:</label>
+      <input type="text" name="Nom" placeholder="Nom Assignatura" required>
+      <label for="DescripcioAssignatura">Si vols, afegeix aquí la descripció de la nova assignatura...</label>   
       <textarea name="Descripcio" rows="5" cols="35"></textarea>
-    <p>
-    <button type="submit">Crear assignatura</button>
-    </p>
-  </form>
+      <p>
+      <button class="boto-css" type="submit">Crear assignatura</button>
+      </p>
+    </form>
+  </div>
 </body>
 </html>

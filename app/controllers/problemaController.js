@@ -2,10 +2,8 @@ const afegirProblemesModel = require("../models/afegirProblemesModel")
 
 var problemaController = {
     afegirProblemesController: (req, res) => {
-        console.log(req.body)
-        const {problemes} = req.body
-        console.log(req.params.idTema)
-        afegirProblemesModel(req.params.idTema, problemes)
+        const {problemes, respostes} = req.body
+        afegirProblemesModel(req.params.idTema, problemes, respostes)
         .then((data) => {
             res.redirect(`/veureTema/${req.params.idTema}`)
         })

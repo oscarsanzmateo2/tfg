@@ -20,10 +20,8 @@ var professorController = {
         })
     },
     renderPaginaAssignatura: (req,res) => {
-        console.log(req.params.idAssignatura)
         return extreuUnaAssignatura(req.params.idAssignatura)
         .then((assignatura) => {
-            console.log("Assignatura postExtreure: ", assignatura)
             return assignatura
         })
     },
@@ -31,12 +29,12 @@ var professorController = {
         const {Nom, Descripcio} = req.body
         crearAssingatura(Nom, Descripcio, req.session.usuari.idUsuari)
         .then((data) => {
-            res.redirect("/perfil")
+            res.redirect("/perfil/Professor")
         })
         .catch((error) => {
             console.error("Error crear l'assignatura: ", error)
             res.status(500).send("Error al crear l'assignatura")
-            res.redirect("/perfil")
+            res.redirect("/perfil/Professor")
         })
     }
 

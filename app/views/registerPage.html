@@ -2,30 +2,40 @@
 <html>
 <head>
   <title>Registre d'usuari</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h1>Registre d'usuari</h1>
-  <form action="/registre" method="post">
-    <p>
-    <input type="text" name="Nom" placeholder="Nom usuari" required>
-    <p>
-    </p>
-    <input type="text" name="Correu" placeholder="Correu Electronic" required>
-    <p>  
-    </p>
-    <input type="password" name="Contrasenya" placeholder="Contrasenya" required>
-    </p>
-    <p>
-    <label for="TipusUsuari">Tipus usuari</label>
-      <select name="TipusUsuari" id="TipusUsuari">
-        <option value="Alumne">Alumne</option>
-        <option value="Professor">Professor</option>
-      </select>
-    </p>
-    <p>
-    <button type="submit">Registrarse</button>
-    </p>
-  </form>
+  <div id="app">
+    <div class="vertical-line-left"></div>
+    <div class="vertical-line-right"></div>
+    <a href="/"><img class="topLeftLogo"  src="images/QG.png" alt="Logo QGenerator.AI"></img></a>
+    
+    <div class="content">
+      <h1>Registre d'usuari</h1>
+      <h2></h2>
+      <form action="/registre" method="post">
+        <p>
+        <input type="text" name="Nom" placeholder="Nom usuari" required>
+        <p>
+        </p>
+        <input type="text" name="Correu" placeholder="Correu Electronic" required>
+        <p>  
+        </p>
+        <input type="password" name="Contrasenya" placeholder="Contrasenya" required>
+        </p>
+        <p>
+        <label for="TipusUsuari">Tipus usuari</label>
+          <select name="TipusUsuari" id="TipusUsuari">
+            <option value="Alumne">Alumne</option>
+            <option value="Professor">Professor</option>
+          </select>
+        </p>
+        <p>
+        <button class="boto-css" type="submit">Registrarse</button>
+        </p>
+      </form>
+    </div>
+
+  </div>
 </body>
 </html>

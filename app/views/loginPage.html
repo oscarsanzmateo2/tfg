@@ -2,17 +2,26 @@
 <html>
 <head>
   <title>Iniciar Sessió</title>
+  <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
-  <h1>Iniciar Sessió</h1>
-  <form action="/login" method="post">
-    <label for="correu">Correu Electrònic:</label>
-    <input type="text" id="Correu" name="Correu" required>
-    <br>
-    <label for="contrasenya">Contrasenya:</label>
-    <input type="password" id="Contrasenya" name="Contrasenya" required>
-    <br>
-    <input type="submit" value="Iniciar Sessió">
-  </form>
+  <div id="app">
+    <div class="vertical-line-left"></div>
+    <div class="vertical-line-right"></div>
+    <a href="/"><img class="topLeftLogo" src="images/QG.png" alt="Logo QGenerator.AI"></img></a>
+    <div class="content">
+      <h1>Iniciar Sessió</h1>
+      <form action="/login" method="post">
+        <label for="correu">Correu Electrònic:</label>
+        <input type="text" id="Correu" name="Correu" required>
+        <br>
+        <label for="contrasenya">Contrasenya:</label>
+        <input type="password" id="Contrasenya" name="Contrasenya" required>
+        <br>
+        <input type="submit" class="boto-css" value="Iniciar Sessió">
+      </form>
+    </div>
+  </div>
 </body>
 </html>

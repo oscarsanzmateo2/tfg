@@ -1,0 +1,265 @@
+#app .content {
+    position: relative;
+    text-align: center;
+}
+
+body {
+    background-color:aliceblue;
+}
+
+/* Style for h1 and buttons */
+#app h1,h2,h3,p {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#app button {
+    margin: 10px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#app .vertical-line-left,
+#app .vertical-line-right {
+    position: fixed;
+    height: 100%;
+    width: 200px;
+    background-color: rgb(82, 82, 240);
+    transform: translateX(-1px);
+    top: 0;
+}
+
+#app .vertical-line-left {
+    left: 0;
+}
+
+#app .vertical-line-right {
+    right: 0;
+}
+
+@media screen and (max-width: 600px) {
+    /* Adjust the lines for smaller screens */
+    #app .vertical-line-left,
+    #app .vertical-line-right {
+      display: none;
+    }
+}
+
+#professorPage #app .content {
+    position: relative;
+    text-align: left;
+    margin-left: 220px;
+    padding: 20px;
+}
+  
+.homePageLogo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+.topLeftLogo{
+    position: fixed;
+    z-index: 1;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.boto-css {
+    font-family: Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    outline: 0;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: rgb(82, 82, 240);
+    border-color:rgb(82, 82, 240);
+}
+
+.boto-css:hover {
+    color: aliceblue;
+    background-color: rgb(82, 82, 240);
+    border-color: rgb(82, 82, 240);
+}
+
+.boto-eliminar {
+    font-family: Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    outline: 0;
+    display: inline-block;
+    position: absolute; /* Position the delete button absolutely */
+    right: 5px; /* Adjust the right property as needed */
+    top: 50%; /* Position the button in the middle of the li */
+    position: absolute; /* Position the delete button absolutely */
+    right: 5px; /* Adjust the right property as needed */
+    top: 50%; /* Position the button in the middle of the li */
+    transform: translateY(-78%); /* Center the button vertically */
+    right: 0;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 3px 8px;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: rgb(187, 39, 51);
+    border-color:rgb(187, 39, 51);
+}
+
+.boto-eliminar:hover {
+    color: aliceblue;
+    background-color:rgb(187, 39, 51);
+    border-color: rgb(82, 82, 240);
+}
+
+form {
+    font-family: Helvetica, Arial, sans-serif;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 2px solid rgb(82, 82, 240);
+    padding: 16px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-top: 100px;
+  }
+
+  label {
+    font-family: Helvetica, Arial, sans-serif;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+  
+li {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color:aliceblue;
+    color: rgb(82, 82, 240);
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid rgb(82, 82, 240);
+    border-radius: 5px;
+    height: 20px; 
+    overflow: hidden;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+li::before {
+    content: '\003E'; 
+    font-size: 30px; 
+    color: rgb(82, 82, 240); 
+    margin-right: 5px; 
+  }
+li:hover {
+    background-color: rgb(171, 171, 221);
+}
+
+
+#assignaturesListLI {
+    margin-bottom: 10px
+}
+
+.boto-h2-inline {
+    display: flex;
+    align-items: center;
+}
+
+.boto-h2-inline h2 {
+    margin-right: 10px;
+}
+
+.anti-overflow {
+    max-height: 300px; /* Adjust the max-height as needed */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+}
+
+.anti-overflow li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.div-problemes {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.div-problemes input {
+    flex: 1; /* Use flex property to distribute available space */
+    margin-right: 10px; /* Optional: Add margin between inputs */
+}
+
+.div-problemes input:last-child {
+    flex: 2; /* Make the last input twice as wide */
+    margin-right: 0; /* Optional: Remove margin for the last input */
+}
+
+#formProblemes {
+    max-width: 75%; 
+    margin: 0 auto;
+    width: 100%; /
+    box-sizing: border-box; 
+    word-wrap: break-word;
+}
+
+#formProblemes input {
+    width: 100%; 
+    box-sizing: border-box; 
+    word-wrap: break-word;
+}
+
+.avis-div {
+    display: inline-block;
+    background-color: yellow;
+    border: 2px solid red;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 8px; 
+    font-weight: bold; 
+    color: red; 
+}
+
+.avis-div p {
+    color: red;
+}
+
+#ProblemaPersonalitzatArea {
+    display: none;
+}

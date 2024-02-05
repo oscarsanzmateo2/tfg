@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pàgina Principal</title>
+  <title>QGenerator.AI</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/help.css">
+  <script src="javascript/inicipage.js"></script>
+
+
 </head>
 <body>
-  <h1>Benvingut a la app</h1>
-  <button onclick="window.location.href = '/registre'">Registrar Usuari</button>
-  <button onclick="window.location.href = '/login'">Iniciar Sessió</button>
+  <div id="app">
+    
+    <div class="vertical-line-left"></div>
+    <div class="vertical-line-right"></div>
+    <div class="content">
+      <h1>Benvingut a QGenerator.AI</h1>
+      <h2>Aquí podràs crear o contestar problemes aleatoris amb l'ajuda de l'inteligencia artificial</h2>
+      <h3>Per començar inicia sessió o crea un nou compte!</h3>
+      <img class="homePageLogo" src="images/QG.png" alt="Logo QGenerator.AI"></img>
+      <button class="boto-css" id="registerButton" >Registrar Usuari</button>
+      <button class="boto-css" id="loginButton" >Iniciar Sessió</button>
+    </div>
+    <div class="help">
+      <div class="question">?</div> 
+      <div class="popup">
+        <h3>Benvingut a QGenerator.AI!</h3>
+        <p>Per poder gaudir de les funcionalitats d'aquesta app, hauràs de registrar-te o iniciar sessió amb un compte creat anteriorment</p>
+        <p>Pots fer-ho desde aquí mateix:</p>
+        <div class="links">
+          <a href="/registre">Registra't aquí si no tens compte!</a><br>
+          <a href="/login">O inicia la sessió!</a>
+
+          
+        </div>
+      </div>
+    
+    </div>
+
+  </div>
+  
+  
 </body>
 </html>

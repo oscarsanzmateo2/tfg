@@ -33,8 +33,18 @@ router.get("/login",(req, res) => {
 router.post("/login", loginUsuari)
 
 // Ruta GET per mostrar pagina personalitzada per alumnes y professors
-router.get("/perfil", (req,res) => {
-  tipusPerfil = perfilController.getPerfil(req,res)
+router.get("/perfil/:tipus", (req,res) => {
+  if(req.params.tipus == 0) {
+    tipusPerfil = perfilController.getPerfil(req,res)
+  } else {
+    tipusPerfil = req.params.tipus
+  }
+  console.log("_---------------------_")
+  console.log("_---------------------_")
+  console.log("tipus perfil", tipusPerfil)
+  console.log("_---------------------_")
+  console.log("_---------------------_")
+
   if(tipusPerfil){
     res.sendFile(path.join(__dirname, "../views", `perfil${tipusPerfil}.html`))
   } else {

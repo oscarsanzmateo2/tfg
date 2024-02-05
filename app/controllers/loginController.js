@@ -17,7 +17,7 @@ function logUsuariController(req, res) {
                 tipus: data[0].TipusUsuari,
                 llistaAssignatures: data[0].AlumnesAssignaturesLlista
             }
-            res.redirect("/perfil")
+            res.redirect("/perfil/0")
         } else {
             res.redirect("/login")
         }

@@ -3,61 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Secció de l'alumnat</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
 </head>
-<body>
+<body id="professorPage">
+    <div id="app">
+      <div class="vertical-line-left"></div>
+      <div class="vertical-line-right"></div>
+      <a href="/"><img class="topLeftLogo" src="/images/QG.png" alt="Logo QGenerator.AI"></img></a>
+      <div class="content">
     <h1>Informació de la assignatura</h1>
     <section>
       <div id="assignaturaContenidor"></div>
-      </ul>
     </section>
-    <hr>
     <section>
-        <h1>Temes de la assignatura</h1>
+        <h2>Temes de la assignatura</h2>
+        <h3>Per contestar preguntes, clica sobre un dels seguents temes:</h3>
         <div id="assignaturaTemes"></div>
-        </ul>
     </section>
-    <script>
-    function renderAssignatura() {
-        var assignaturaID = window.location.pathname.split("/").pop()
-        fetch(`/api/getUnaAssignatura/${assignaturaID}`)
-            .then(response => response.json())
-            .then(data => {   
-                var assignatura = data.assignatura[0]
-                if(assignatura) {
-                    var assignaturaList = document.createElement("ul")
-                    assignaturaList.innerHTML = `
-                        <h1> La meva assignatura:   ${assignatura.Nom}</h1>
-                        <li><strong>Assignatura ID:</strong> ${assignatura.AssignaturaID}</li>
-                        <li><strong>Professor ID:</strong> ${assignatura.ProfessorID}</li>
-                        <li><strong>Descripció:</strong> ${assignatura.Descripcio || "No s'ha afegit una descripció"}</li>
-                    `
-                    assignaturaContenidor.appendChild(assignaturaList)
-                    var assignaturaTema = document.createElement("ul")
-                    assignaturaTema.innerHTML = ""
-                    if(data.assignatura[0].NomTema != null) { //si hi ha minim un tema, aquesta condicio la pasa
-                        data.assignatura.forEach(element => {
-                        var li = document.createElement('li')
-                        var a = document.createElement('a')
-                        a.textContent = element.NomTema
-                        a.href = `/alumnePreguntaAleatoria/${element.TemaID}` 
-                        li.appendChild(a)
-                        assignaturaTemes.appendChild(li)        
-                    })
-                    } else { // si no hi han temes crea un text predefinit
-                        var li = document.createElement("li")
-                        li.textContent = "No hi han temes per aquesta assignatura!"
-                        assignaturaTemes.appendChild(li)
-                    }                
-                    document.querySelector("button").setAttribute("onclick", `window.location.href = "/crearTema/${assignatura.AssignaturaID}"`)
-                }     
-            })
-            .catch(error => {
-                console.error('Error al obtenir la assignatura: ', error)
-            })
-    }
-    
-
-    document.addEventListener("DOMContentLoaded", renderAssignatura)
-    </script>
+    <script src="/javascript/alumneVeureAssignatura.js"></script>
 </body>
 </html>

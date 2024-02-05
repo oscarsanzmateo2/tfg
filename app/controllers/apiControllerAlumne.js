@@ -3,7 +3,6 @@ const generarRespostaAPIChatGPTAlumnes = require("../models/apiAlumneModel")
 async function feedbackProblema(req, res) {
     try {
       var {problema, resposta} = req.body
-      console.log(problema, resposta)
       var respostaChatGPT = await generarRespostaAPIChatGPTAlumnes(problema, resposta)
       return respostaChatGPT
     } catch(error) {

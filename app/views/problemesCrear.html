@@ -2,28 +2,35 @@
 <html>
 <head>
   <title>Creador de problemes</title>
+  <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
-  <h1>Crea problemes randomatitzats per el tema</h1>
-  <form id="creaProblemesForm" method="post">
-    <p> 
-        <label for="TipusProblema">Tipus problema</label>
-          <select name="TipusProblema" id="TipusProblema">
-            <option value="EcuacioSegonGrau">Ecuacio de segon grau</option>
-            <option value="aux">...</option>
-          </select>
-    </p> 
-    <input type="submit" value="Crea Problemes aleatoris">
-  </form>
-  <section>
-
-  </section>
-  <script>
-    function renderPagCrearProblemes() {
-      var temaID = window.location.pathname.split("/").pop()
-      document.getElementById("creaProblemesForm").action = `/api/chatGptApi/${temaID}`
-  }
-  document.addEventListener("DOMContentLoaded", renderPagCrearProblemes)
-  </script>
+  <div id="app">
+    <div class="vertical-line-left"></div>
+    <div class="vertical-line-right"></div>
+    <a href="/"><img class="topLeftLogo" src="/images/QG.png" alt="Logo QGenerator.AI"></img></a>
+    <div class="content">
+      <h1>Crea problemes randomatitzats per el tema</h1>
+      <h2>Per poder crear-los, nomes cal seleccionar el tipus de problemes que vulguis.</h2>
+      <h3>En cas d'escollir el problema personalitzat, es molt important que l'escriguis en castellà</h3>
+      <form id="creaProblemesForm" method="post">
+        <p> 
+            <label for="TipusProblema">Tipus problema</label>
+              <select name="TipusProblema" id="TipusProblema" onchange="ProblemaPersonalitzatMostrar()">
+                <option value="EcuacioSegonGrau">Equació de segon grau</option>
+                <option value="SistemaEcuacio">Sistema Equació de 3 incognites</option>
+                <option value="ProblemaPersonalitzat">Problema Personalitzat</option>
+              </select>
+        </p> 
+        <div id="ProblemaPersonalitzatArea">
+          <label for="ProblemaPersonalitzatLabel">Escriu aquí el teu problema</label>
+          <textarea name="ProblemaPersonalitzatInput" rows="5" cols="35" id="ProblemaPersonalitzatInput"></textarea>
+        </div>
+        <input class="boto-css" type="submit" value="Crea Problemes aleatoris">
+      </form>
+    </div>
+  </div>
+  <script src="/javascript/problemes.js"></script>
 </body>
 </html>

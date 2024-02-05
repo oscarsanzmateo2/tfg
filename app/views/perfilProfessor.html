@@ -3,56 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Secció del professorat</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/help.css">
 </head>
-<body>
-    <h1>Benvingut a la teva aula professor</h1>
-    <button onclick="window.location.href = '/crearAssingatura'">Crea una nova assignatura</button>
-
-    <section>
-      <h2>Les meves assignatures</h2>
-      <ul id="assignaturesList">
-      </ul>
-    </section>
-    <script>
-      function renderAssignatures() {
-        var assignaturesList = document.getElementById('assignaturesList')
-        fetch('/api/getAssignatures')
-            .then(response => response.json())
-            .then(assignatures => {     
-              assignaturesList.innerHTML = ""
-              console.log(assignatures.assignatures[0])
-              if(assignatures.assignatures[0] != null) {
-                assignatures.assignatures.forEach(assignatura => {
-                  var li = document.createElement('li')
-                  var a = document.createElement('a')
-                  a.textContent = assignatura.Nom
-                  a.href = `/veureAssignatura/${assignatura.AssignaturaID}` 
-                  li.appendChild(a)
-                  assignaturesList.appendChild(li)
-              })
-              } else {
-                var li = document.createElement('li')
-                var a = document.createElement('a')
-                a.textContent = "No hi han assignatures, crea una clicant aquí o al botó de dalt!"
-                a.href = "/crearAssingatura"
-                li.appendChild(a)
-                assignaturesList.appendChild(li)
-              }
-              
-            })
-            .catch(error => {
-                console.error('Error al obtenir les assignatures: ', error);
-            });
-    }
-
-    document.addEventListener('DOMContentLoaded', renderAssignatures);
-    </script>
-    <section>
-        <h2>Els meus alumnes</h2>
-        <ul>
-            <li> Alumne 1 </li>
-            <li> Alumne 2 </li>
+<body id="professorPage">
+  <div id="app">
+    <div class="vertical-line-left"></div>
+    <div class="vertical-line-right"></div>
+    <a href="/"><img class="topLeftLogo" src="/images/QG.png" alt="Logo QGenerator.AI"></img></a>
+    <div class="content">
+      <h1>Benvingut a la teva aula professor</h1>
+      <section>
+        <div class="boto-h2-inline">
+          <h2>Les meves assignatures</h2>
+          <button class="boto-css" onclick="window.location.href = '/crearAssingatura'">Crea una nova assignatura</button>
+        </div>
+        <ul id="assignaturesList" class="anti-overflow">
         </ul>
-    </section>
+      </section>
+      <script src="/javascript/professor.js"> </script>
+      <section>
+          <h2>Els meus alumnes</h2>
+          <ul>
+              <li> Alumne 1 </li>
+              <li> Alumne 2 </li>
+          </ul>
+      </section>
+    </div>
+    <div class="help">
+      <div class="question">?</div> 
+      <div class="popup">
+        <h3>Ajuda per els professors!</h3>
+        <p>Desde la pàgina principal, podràs veure les assignatures que haguis creat anteriorment i els alumnes que es subscriguin a les teves assignatures</p>
+        <p>Si es la primera vegada que entres, pots crear una nova assignatura desde el botó de dalt, o desde aquí mateix:</p> 
+        <div class="links">
+          <a href="/crearAssingatura"> Crea una nova assignatura!</a>          
+        </div>
+        <p>Un cop tinguis assignatures creades, pots clicar sobre d'elles per administrar-les!</p>
+
+      </div>
+    </div>
+  </div>
 </body>
 </html>

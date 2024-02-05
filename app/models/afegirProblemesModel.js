@@ -1,13 +1,11 @@
 const connectaBD = require("../models/userModel")
 
-afegirProblemesModel = function(temaID, enunciats) {
-    
+afegirProblemesModel = function(temaID, enunciats, respostes) {
     noEmpty = enunciats.filter(enunciat => enunciat != "") // filtrem els enunciats buits...
-    let auxQuery = noEmpty.map(enunciat => [temaID, enunciat])// i els posem en un format amb el que sql pugui treballar facilment
+    let auxQuery = noEmpty.map((enunciat, index) => [temaID, enunciat, respostes[index]])// i els posem en un format amb el que sql pugui treballar facilment
     
-    console.log("auxQuery = ",auxQuery)
     var auxConnexio = connectaBD.getConnectaBD() //creem una nova connexio
-    var query = "INSERT INTO problema (TemaID, Enunciat) VALUES ?"
+    var query = "INSERT INTO problema (TemaID, Enunciat, RespostaProfessor) VALUES ?"
     return new Promise((resolve, reject) => {
         if(auxConnexio) {
             auxConnexio.getConnection(function(err, connection) {

@@ -23,7 +23,7 @@ loginUsuari = function(email, contrasenya) {
                         reject(error)
                       } else {
                         if(results) {
-                            console.log(results[0])
+                            //console.log(results[0])
                             var auxContra = results[0].Contrasenya
     
                             bcrypt.compare(contrasenya, auxContra, function(err, result) {

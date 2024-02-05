@@ -2,23 +2,26 @@
 <html>
 <head>
   <title>Crea un tema nou per aquesta assignatura</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h1>Crea un tema nou</h1>
-  <p>
-    Afegeix un tema nou per aquesta assignatura, desprès podras afegir-li tots els problemes que vulguis.
-  </p>
-  <form id="crearTemaForm" method="post">
-    <p>
-    <input type="text" name="Nom" placeholder="Nom Tema" required>
-    <p>
-        Si vols, afegeix aquí la descripció del nou tema...
-       <textarea name="Descripcio" rows="5" cols="35"></textarea>
-    <p>
-    <button type="submit">Crear tema</button>
-    </p>
-  </form>
+  <div id="app">
+    <div class="vertical-line-left"></div>
+    <div class="vertical-line-right"></div>
+    <a href="/"><img class="topLeftLogo" src="/images/QG.png" alt="Logo QGenerator.AI"></img></a>
+    <div class="content">
+      <h1>Crea un tema nou</h1>
+      <h2>Afegeix un tema nou per aquesta assignatura, desprès podras generar preguntes aleatories amb l'ajuda de l'inteligencia artificial.</h2>
+      <form id="crearTemaForm" method="post">
+        <label for="NomTema">Nom Tema: </label>
+        <input type="text" name="Nom" placeholder="Nom Tema" required>
+        <label for="DescripcioTema">Si vols, afegeix aquí la descripció del nou tema...</label>   
+        <textarea name="Descripcio" rows="5" cols="35"></textarea>
+        <button class="boto-css" type="submit">Crear tema</button>
+        
+      </form>
+    </div>
+  </div>
   <script>
     function renderPagTema() {
         var assignaturaID = window.location.pathname.split("/").pop()

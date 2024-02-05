@@ -12,13 +12,13 @@ const feedbackProblema = require("./controllers/apiControllerAlumne")
 const app = express()
 
 
-
 app.use(session({ secret: 'nosehadeseralgoaleatoriillargambnumero875494', resave: true, saveUninitialized: true }))
 
 
-app.use(express.json());
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname, 'public'))); 
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'views')))
 
 app.get('/api/getAssignatures', async (req, res) => {
   try {
@@ -83,7 +83,7 @@ app.get('/api/getAssignaturesAlumnes', async (req, res) => {
   try {
     
     var assignatura = await alumneController.renderPaginaAlumne(req, res)
-    console.log(req.session.usuari)
+    //console.log(req.session.usuari)
     res.json( assignatura )
   } catch (error) {
     console.error('Error al obtenir les assignatures: ', error);
@@ -91,6 +91,21 @@ app.get('/api/getAssignaturesAlumnes', async (req, res) => {
 
   }
 })
+
+app.get('/api/getAssignaturesAlumnesRegistrades', async (req, res) => {
+  try {
+    
+    var assignatura = await alumneController.renderPaginaAlumneRegistrades(req, res)
+    //console.log(assignatura)
+    res.json( assignatura )
+  } catch (error) {
+    console.error('Error al obtenir les assignatures: ', error);
+    res.status(500).json({ error: 'Error al  obtenir les assignatures' });
+
+  }
+})
+
+
 
 app.get("/api/getUnaPregunta/:idTema", async (req, res) => {
   try {
@@ -102,6 +117,8 @@ app.get("/api/getUnaPregunta/:idTema", async (req, res) => {
   }
 })
 
+
+
 app.post("/api/feedbackChatGPTproblema", async (req, res) => {
   try {
     const respotaChatGPT = await feedbackProblema(req, res)
@@ -112,12 +129,12 @@ app.post("/api/feedbackChatGPTproblema", async (req, res) => {
   }
 })
 
-app.use('/', indexRouter)
+app.use("/", indexRouter)
 
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
-  console.log('Servidor escuchando en el puerto 3000');
+  console.log("Servidor escuchando en el puerto 3000")
 })
 
 
