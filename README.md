@@ -4,11 +4,8 @@ Una vegada ho tinguis, podràs importar directament el fitxer tfg-2023-2024.sql.
 Un cop muntada la base de dades, podràs anar al codi, fer cd app, i després fent node app ja hauries de tenir l'aplicacio funcionant.
 Per poder visualitzar-la ves a un navegador, i busca http://localhost:3000/.
 
-De moment, hauries de poder registrar usuaris professors i alumnes, logejar-te.
-Amb els usuaris professors hauries de poder crear assignatures, temes, i des dels temes generar problemes aleatoris.
-Amb els usuaris alumnes hauries de visualitzar totes les assignatures del sistema (en el futur no serà així, però era per provar si podia contestar) i poder contestar problemes anant als temes (sempre que tinguin problemes...)
-
 Remarcar tambè et farà falta tant node com npm.
 
-Si tens algun dubte o falla envia correu i intento solucionar-ho el més ràpid possible.
+Teniu un video explicant com instalar el entorn pas a pas en el dossier a /index/Codi
 
+Si tens algun dubte o falla envia un correu a 1500824@uab.cat i intentaré respondre com més aviat millor.
