@@ -1,6 +1,8 @@
 function renderPagCrearProblemes() {
     var temaID = window.location.pathname.split("/").pop()
     document.getElementById("creaProblemesForm").action = `/api/chatGptApi/${temaID}`
+    document.querySelector("#botoEnrera").setAttribute("onclick", `window.location.href = "/veureTema/${temaID}"`)
+
 }
 document.addEventListener("DOMContentLoaded", renderPagCrearProblemes)
 

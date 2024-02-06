@@ -11,6 +11,8 @@
     <a href="/"><img class="topLeftLogo" src="/images/QG.png" alt="Logo QGenerator.AI"></img></a>
     <div class="content">
       <h1>Crea un tema nou</h1>
+      <button id="botoEnrera"  class="boto-enrera">Tornar enrera</button>
+
       <h2>Afegeix un tema nou per aquesta assignatura, desprès podras generar preguntes aleatories amb l'ajuda de l'inteligencia artificial.</h2>
       <form id="crearTemaForm" method="post">
         <label for="NomTema">Nom Tema: </label>
@@ -26,6 +28,8 @@
     function renderPagTema() {
         var assignaturaID = window.location.pathname.split("/").pop()
         document.getElementById("crearTemaForm").action = `/crearTema/${assignaturaID}`
+        document.querySelector("#botoEnrera").setAttribute("onclick", `window.location.href = "/veureAssignatura/${assignaturaID}"`)
+
     }
     document.addEventListener("DOMContentLoaded", renderPagTema)
 

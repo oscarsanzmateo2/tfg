@@ -13,10 +13,10 @@ async function generarRespostaAPIChatGPT(prompt) {
     model: "gpt-3.5-turbo",
     messages: [{role: "user", content: prompt}],
   })
-  console.log(respostaGPT)
-  console.log(respostaGPT.choices[0])
-  console.log(respostaGPT.choices[0].message)
-  console.log(respostaGPT.choices[0].message.content)
+  //console.log(respostaGPT)
+  //console.log(respostaGPT.choices[0])
+  //console.log(respostaGPT.choices[0].message)
+  //console.log(respostaGPT.choices[0].message.content)
   return respostaGPT.choices[0].message.content
 }
 

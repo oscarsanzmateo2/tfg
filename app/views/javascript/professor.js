@@ -17,18 +17,9 @@ function renderAssignatures() {
                     a.textContent = `Nom assignatura: ${assignatura.Nom} `
                     a.href = `/veureAssignatura/${assignatura.AssignaturaID}`
 
-                    var deleteButton = document.createElement("button")
-                    deleteButton.textContent = "Eliminar"
-                    deleteButton.classList.add("boto-eliminar")
-                    deleteButton.addEventListener("click", function() {
-                        // Handle delete logic here (e.g., show a confirmation modal)
-                        // Once confirmed, make a request to delete the assignatura from the database
-                        // and then re-render the assignatures list
-                    })
 
                     li.appendChild(a)
                     li.appendChild(span)
-                    li.appendChild(deleteButton)
                     
 
                     assignaturesList.appendChild(li)
@@ -44,8 +35,8 @@ function renderAssignatures() {
           
         })
         .catch(error => {
-            console.error('Error al obtenir les assignatures: ', error);
-        });
+            console.error('Error al obtenir les assignatures: ', error)
+        })
 }
 
-document.addEventListener('DOMContentLoaded', renderAssignatures);
+document.addEventListener('DOMContentLoaded', renderAssignatures)

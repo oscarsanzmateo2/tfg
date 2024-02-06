@@ -1,3 +1,12 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//Funcions de controlador que tenen relació amb el usuari alumne
+//renderPaginaAlumne: extreu les dades necessaries de la BD per poder renderitzar la pagina dels alumnes.
+//getPreguntaAleatoria: extreu una pregunta aleatoriament de la BD.
+//actualitzaLlistaAlumne: actualitza el llistat d'assignatures dels alumnes.
+//renderPaginaAlumneRegistrades: extreu el llistat de d'un alumne en concret
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 const extreuProfessorsIAssignatures = require("../models/extreuProfessorsIAssignaturesModel")
 const getPregunta = require("../models/getPreguntaModel")
 const actualitzaLlistaAlumneModel = require("../models/actualitzaLlistaAlumneModel")

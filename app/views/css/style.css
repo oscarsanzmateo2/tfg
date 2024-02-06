@@ -91,18 +91,15 @@ body {
     border-color: rgb(82, 82, 240);
 }
 
-.boto-eliminar {
+.boto-enrera {
     font-family: Helvetica, Arial, sans-serif;
     cursor: pointer;
     outline: 0;
     display: inline-block;
-    position: absolute; /* Position the delete button absolutely */
-    right: 5px; /* Adjust the right property as needed */
-    top: 50%; /* Position the button in the middle of the li */
-    position: absolute; /* Position the delete button absolutely */
-    right: 5px; /* Adjust the right property as needed */
-    top: 50%; /* Position the button in the middle of the li */
-    transform: translateY(-78%); /* Center the button vertically */
+    position: absolute; 
+    right: 5px; 
+    top: 5%;
+    transform: translateY(-78%);
     right: 0;
     font-weight: 400;
     line-height: 1.5;
@@ -113,13 +110,13 @@ body {
     font-size: 1rem;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    color: rgb(187, 39, 51);
-    border-color:rgb(187, 39, 51);
+    color: rgb(206, 178, 21);
+    border-color:rgb(206, 178, 21);
 }
 
-.boto-eliminar:hover {
+.boto-enrera:hover {
     color: aliceblue;
-    background-color:rgb(187, 39, 51);
+    background-color:rgb(206, 178, 21);
     border-color: rgb(82, 82, 240);
 }
 

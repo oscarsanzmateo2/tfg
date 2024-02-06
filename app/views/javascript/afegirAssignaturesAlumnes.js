@@ -2,7 +2,6 @@ function renderAssignatura() {
     fetch(`/api/getAssignaturesAlumnes`)
         .then(response => response.json())
         .then(assignatures => {   
-            //console.log(assignatures)  
             assignaturesList.innerHTML = ""
             if(assignatures != null) {
                 assignatures.forEach(assignatura => {

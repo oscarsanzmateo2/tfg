@@ -1,3 +1,8 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//Aquesta funcio de model permet a la app extreure els professors i les asignatures del registre d'un 
+//alumne en concret.
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const connectaBD = require("../models/userModel")
 
 extreuProfessorsIAssignaturesRegistrades = function(idUsuari) {
@@ -19,7 +24,9 @@ extreuProfessorsIAssignaturesRegistrades = function(idUsuari) {
                     } else {
                         if(results && results.length>0) { 
                             resolve(results)
-                        } 
+                        } else {
+                            resolve(null)
+                        }
                     }
                 })
             })

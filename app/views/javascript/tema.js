@@ -36,7 +36,9 @@ function renderAssignatura() {
                 }   
                 
                 
-                document.querySelector("button").setAttribute("onclick", `window.location.href = "/crearProblemes/${tema.TemaID}"`)
+                document.querySelector("#creaProblemaButton").setAttribute("onclick", `window.location.href = "/crearProblemes/${tema.TemaID}"`)
+                document.querySelector("#botoEnrera").setAttribute("onclick", `window.location.href = "/veureAssignatura/${tema.AssignaturaID}"`)
+
             }
             
             

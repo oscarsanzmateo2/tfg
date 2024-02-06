@@ -39,12 +39,6 @@ router.get("/perfil/:tipus", (req,res) => {
   } else {
     tipusPerfil = req.params.tipus
   }
-  console.log("_---------------------_")
-  console.log("_---------------------_")
-  console.log("tipus perfil", tipusPerfil)
-  console.log("_---------------------_")
-  console.log("_---------------------_")
-
   if(tipusPerfil){
     res.sendFile(path.join(__dirname, "../views", `perfil${tipusPerfil}.html`))
   } else {
@@ -52,54 +46,69 @@ router.get("/perfil/:tipus", (req,res) => {
   }
 })
 
-
+// Ruta GET per veure la pàgina de crear assignatures.
 router.get("/crearAssingatura", (req, res) => {
   res.sendFile(path.join(__dirname, "../views", "professorCrearAssignPage.html"))
 })
 
+// Ruta POST per crear una assignatura nova.
 router.post("/crearAssingatura", professorController.crearAssingaturaController)
 
+// Ruta GET per veure la pàgina de veure una assignatura en concret.
 router.get("/veureAssignatura/:idAssingatura",(req,res) => {
   res.sendFile(path.join(__dirname, "../views", "professorVeureAssignPage.html"))
 }) 
 
+// Ruta GET per veure la pàgina de crear temes.
 router.get("/crearTema/:idAssignatura", (req,res) => {
   res.sendFile(path.join(__dirname, "../views", "professorCrearTemaPage.html"))
 })
 
+// Ruta POST per crear un tema nou.
 router.post("/crearTema/:idAssignatura", assignaturaController.crearTemaController)
 
+// Ruta GET per veure la pàgina d'un tema en concret.
 router.get("/veureTema/:idTema", (req,res) => {
   res.sendFile(path.join(__dirname, "../views", "professorVeureTemaPage.html"))
 })
 
+// Ruta GET per veure la pàgina de crear problemes.
 router.get("/crearProblemes/:idTema", (req, res) => {
   res.sendFile(path.join(__dirname, "../views", "problemesCrear.html"))
 })
 
+// Ruta GET per veure la pàgina dels problemes generats.
 router.get("/veureProblemesGenerats/:idTema", (req, res) => {
   res.sendFile(path.join(__dirname, "../views", "professorVeureProblemesGenerats.html"))
 })
 
+// Ruta POST per afegir els problemes generats a la BD.
 router.post("/veureProblemesGenerats/:idTema", problemaController.afegirProblemesController)
+
 
 //Aqui comencen els alumnes...
 
+// Ruta GET per veure la pàgina de afegir asignatures al seu registre.
 router.get("/afegirAssignatura", (req, res) => {
   res.sendFile(path.join(__dirname, "../views", "alumneAfegirAssignatures.html"))
 })
 
+// Ruta GET que actualitza el llistat del alumne i retorna a la seva pàgina principal.
 router.get("/afegirAssignaturaAlumne", (req, res) => {
   alumneController.actualitzaLlistaAlumne(req, res)
   res.sendFile(path.join(__dirname, "../views", "perfilAlumne.html"))
 })
 
+// Ruta GET per veure la pàgina d'una assignatura en concret.
 router.get("/veureAssignaturaAlumne/:idAssignatura", (req, res) => {
   res.sendFile(path.join(__dirname, "../views", "alumneVeureAssignatura.html"))
 })
 
+// Ruta GET per veure la pàgina de contestar preguntes.
 router.get("/alumnePreguntaAleatoria/:idTema", (req, res) => {
   res.sendFile(path.join(__dirname, "../views", "alumneVeurePregunta.html"))
 })
+
+
 
 module.exports = router;

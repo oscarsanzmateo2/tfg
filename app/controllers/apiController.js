@@ -1,12 +1,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //Aquesta funcio de controlador permet rebre el tipus de problema seleccionat per el usuari professor 
-//i crida al model de chatGPT per obtenir els valors aleatoris (No funciona).
+//i crida al model de chatGPT per obtenir els valors aleatoris despres de fer-li un set al prompt.
+//Posteriorment es tracten les dades per extreure els enunciats i les solucions proporcionades per la IA.
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const { query } = require("express")
 const generarRespostaAPIChatGPT = require("../models/apiModel")
-const { prompt } = require("readline-sync")
-
 
 
 async function generarNumerosAleatorios(req, res) {
@@ -20,19 +18,23 @@ async function generarNumerosAleatorios(req, res) {
     if(TipusProblema == "ProblemaPersonalitzat") {
       promptAPI = "Genera 5 problemas con el siguiente enunciado: " + ProblemaPersonalitzatInput + ". contesta con solo el enunciado y con el siguiente formato: 1.Enunciado1 2.Enunciado2 n.Enunciadon , es muy importante que cada enunciado este en una única linea."
     }
+    if(TipusProblema == "SistemaEcuacio") {
+      promptAPI = "Generate 5 systems of equations with 3 variables. I want all numbers to be integers including positive and negatives random number integers. Answer with only the solution and the answer, no additionl text and follow this structure: 1.ecuation1,ecuation2,ecuation3 2.ecuation1,ecuation2,ecuation3 n.ecuation1,ecuation2,ecuation3, having all the ecuations on the same line without spaces and separated by commas"
+    }
+    if(TipusProblema == "TeoremaPitagores") {
+      promptAPI = "Generate 10 problems related to the Pythagorean theorem. I want all the solutions to be integers without decimals. Answer with only the solution and the answer, no additionl text and follow this structure: 1.problem1 solution1 2.problem2 solution2 n.problemn solutionn, having each problem in the same line without spaces."
+    }
     if(promptAPI != "") {
       var respostaChatGPT = await generarRespostaAPIChatGPT(promptAPI) //cridem al metode per generar la resposta GPT
       var respostaSeparada = respostaChatGPT.split("\n") //com totes les respostes tenen un \n, aixi podem obtenir totes les repostes separades
       var matchEq = []
       var matchSol = []
       respostaSeparada.forEach((linea, indice) => {
-        //console.log("linea : ", indice, " es: ", linea)
         var match = linea.match(/(\d+)\. (.+)  Solution: (.+)/ )
         if(!match) { // si el problema es del tipus problema personalitzat entrarà aquí
           var match2 = linea.match(/(\d+)\. (.+)/)
           if(match2) {
             matchEq.push(match2[2].trim())
-            //console.log(matchEq)
           }
         } else { // si el problema es tipus problema parametritzat farà aixo
           const ecuacio = match[2].trim()

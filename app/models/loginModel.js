@@ -18,28 +18,32 @@ loginUsuari = function(email, contrasenya) {
                 }
                 connection.query(query, [email], (error, results) => {
                     connection.release()
-                    if(error) {
+                    if(error || (results[0] == null)) {
                         console.log("ERROR al iniciar amb el usuari: ", error)
-                        reject(error)
+                        resolve(null)
                       } else {
-                        if(results) {
-                            //console.log(results[0])
+                        if(results[0]) {
                             var auxContra = results[0].Contrasenya
-    
-                            bcrypt.compare(contrasenya, auxContra, function(err, result) {
-                                if(err){
-                                    console.log("ERROR al comparar contrasenyes: ", err)
-                                    reject(err)
-                                } else {
-                                    if(result) { //la contrasenya es la correcte
-                                        resolve(results)
+                            if(auxContra != null) {
+                                bcrypt.compare(contrasenya, auxContra, function(err, result) {
+                                    if(err){
+                                        console.log("ERROR al comparar contrasenyes: ", err)
+                                        reject(err)
                                     } else {
-                                        console.log("ERROR contrasenya incorrecta")
-                                        resolve(null)
+                                        if(result) { //la contrasenya es la correcte
+                                            resolve(results)
+                                        } else {
+                                            console.log("ERROR contrasenya incorrecta")
+                                            resolve(null)
+                                        }
                                     }
-                                }
-                                
-                            })
+                                    
+                                })
+                            } else {
+                                console.log("ERROR, usuari no existeix")
+                                resolve(null)
+                            }
+                            
                         } else { //sql correcte, pero no hi han resultats, per lo que el usuari no existeix
                             console.log("ERROR usuari no existeix")
                             resolve(null)

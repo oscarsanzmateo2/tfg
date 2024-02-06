@@ -1,6 +1,7 @@
 function renderProblemes() {
     var temaID = window.location.pathname.split("/").pop()
     var formProblemes = document.getElementById('formProblemes');
+        document.querySelector("#botoEnrera").setAttribute("onclick", "window.history.back()")
 
     fetch(`/api/getUnaPregunta/${temaID}`)
         .then(response => response.json())
@@ -23,18 +24,21 @@ function renderProblemes() {
 
             } else { 
                 var h3 = document.createElement("h3")
+               
                 h3.textContent = "No hi han problemes per aquest tema, clica al botó de sota per tornar a la llista de assignatures"
                 problemaContenidor.appendChild(h3)
-
-                formProblemes.parentNode.removeChild(formProblemes);
+                
+                formProblemes.parentNode.removeChild(formProblemes)
 
                 var button = document.createElement("button")
-                button.textContent = "Torna endarere"
+                button.textContent = "Torna enrera"
                 button.addEventListener("click", function () {
                     window.history.back()
                 })
                 problemaContenidor.appendChild(button)
             }
+
+
         })
         .catch(error => {
             console.error('Error al obtenir els problemes generats per IA: ', error)

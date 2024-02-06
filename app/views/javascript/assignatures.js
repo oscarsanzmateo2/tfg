@@ -5,6 +5,7 @@ function renderAssignatura() {
         .then(data => {   
             var assignatura = data.assignatura[0]
             if(assignatura) {
+
                 var assignaturaList = document.createElement("ul")
                 assignaturaList.innerHTML = `
                     <h1> La meva assignatura: <a href="/perfil/Professor"> ${assignatura.Nom}</a></h1>
@@ -15,14 +16,8 @@ function renderAssignatura() {
                 assignaturaContenidor.appendChild(assignaturaList)
                 var assignaturaTema = document.createElement("ul")
                 assignaturaTema.innerHTML = ""
-                if(data.assignatura[0].NomTema != null) { //si hi ha minim un tema, aquesta condicio la pasa
-                    /*data.assignatura.forEach(element => {
-                    var li = document.createElement('li')
-                    var a = document.createElement('a')
-                    a.textContent = element.NomTema
-                    a.href = `/veureTema/${element.TemaID}` 
-                    li.appendChild(a)
-                    assignaturaTemes.appendChild(li) */
+                if(data.assignatura[0].NomTema != null) { 
+                    
                     data.assignatura.forEach(element => {
                         if(element.DescripcioTema == null || element.DescripcioTema == "") {
                             element.DescripcioTema = "No s'ha afegit una descripció per aquest tema"
@@ -46,7 +41,7 @@ function renderAssignatura() {
                     li.appendChild(a)
                     assignaturaTemes.appendChild(li)
                 }                
-                document.querySelector("button").setAttribute("onclick", `window.location.href = "/crearTema/${assignatura.AssignaturaID}"`)
+                document.querySelector("#creaTemaButton").setAttribute("onclick", `window.location.href = "/crearTema/${assignatura.AssignaturaID}"`)
             }     
         })
         .catch(error => {
