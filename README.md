@@ -10,6 +10,8 @@ Després simplement llença la comanda cd app.
 
 npm install per descarregar les dependencies del codi.
 
+Recordar també el introduïr la clau de l'API (la podeu trobar al dossier en Codi i visualització de l'entorn en el .txt Enllaços importants) en el fitxer .env que es troba a /app/.env, on haureu de modificar la variable OPENAI_API_KEY = "", per OPENAI_API_KEY = "la_clau_API_de_OpenAI".
+
 I fent tot seguit node app.js ja hauries de tenir l'aplicacio funcionant.
 
 Per poder visualitzar-la ves a un navegador, i busca http://localhost:3000/.
