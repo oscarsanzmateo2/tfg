@@ -15,9 +15,13 @@ Si tens algun dubte o falla envia un correu a 1500824@uab.cat i intentaré respo
 M'he trobat un error en la versió de GitHub, bàsicament el directori "node_modules" trobat dins del directori app no es carrega correctament realitzant "npm install".
 
 Per poder utilitzar aquesta versió (la de GitHub, la versió del dossier no té aquest problema) haureu d'eliminar o manualment o fent servir línies de comandes aquesta carpeta.
+
 Comandes: (suposant que esteu en la carpeta inicial tfg-main)
+
 cd app
+
 En Windows és: Remove-Item -Recurse -Force .\node_modules\
+
 En Linux és: rm -rf node_modules
 
 Un cop eliminada la carpeta tfg-main/app/node_modules, simplement la torneu a generar fent "npm install".
